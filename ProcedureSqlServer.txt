@@ -1,0 +1,12 @@
+ create procedure pa_libros_autor_editorial
+  @autor varchar(30),
+  @editorial varchar(20) 
+ as
+  select titulo, precio
+   from libros
+   where autor= @autor and
+   editorial=@editorial;
+
+ exec pa_libros_autor_editorial 'Richard Bach','Planeta';
+
+http://www.tutorialesprogramacionya.com/sqlserverya/temarios/descripcion.php?cod=122&punto=122&inicio=

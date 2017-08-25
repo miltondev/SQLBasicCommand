@@ -1,0 +1,15 @@
+  CREATE TRIGGER TR_ARTICULOS
+      ON ARTICULOS
+      AFTER UPDATE
+      AS
+        BEGIN
+           IF UPDATE (STOCK)    -- sólo si actualiza STOCK
+            BEGIN
+             INSERT INTO HCO_STOCK
+             (IDARTICULO, STOCK, FECHA)
+             SELECT IDARTICULO, STOCK, getdate()
+             FROM INSERTED
+            END
+END
+
+http://gherrerasqlserver.blogspot.com/2014/08/triggers-dml-ddl.html
